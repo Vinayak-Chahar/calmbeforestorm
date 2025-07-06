@@ -1,35 +1,134 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calm Before Storm</title>
   <style>
     body {
-      background-color: #111;
-      color: #eee;
-      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #0f0f0f, #1a1a1a);
+      color: #e0e0e0;
+    }
+    header {
+      background-color: #121212;
+      padding: 20px;
       text-align: center;
-      padding: 30px;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #7fffd4;
+      border-bottom: 1px solid #333;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px 0;
+    }
+    nav a {
+      color: #ccc;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    nav a:hover {
+      color: #7fffd4;
+    }
+    .section {
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    .post-box {
+      background-color: #222;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
     }
     textarea {
-      width: 90%;
-      height: 150px;
-      margin-top: 20px;
-      background: #222;
-      color: #0f0;
-      border: 1px solid #555;
+      width: 100%;
+      height: 120px;
+      background-color: #111;
+      color: #fff;
+      border: 1px solid #444;
+      border-radius: 5px;
       padding: 10px;
-      font-family: monospace;
+      resize: none;
+    }
+    button {
+      margin-top: 10px;
+      background-color: #7fffd4;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #66e6c2;
+    }
+    .entries {
+      margin-top: 30px;
+    }
+    .entry {
+      background-color: #111;
+      padding: 15px;
+      border-left: 4px solid #7fffd4;
+      margin-bottom: 15px;
+      border-radius: 5px;
     }
   </style>
 </head>
 <body>
-  <h1>Calm Before Storm</h1>
-  <p>Dark psychology, silence, peace & cold-blooded thoughts...</p>
-
-  <h2>Your Daily Entry</h2>
-  <textarea placeholder="Write your thoughts here... (Note: This won't be saved unless connected to a backend)"></textarea>
-
-  <p style="margin-top: 30px; font-size: 0.8em;">Made by Vinayak 🌌</p>
+  <header>calmbeforestorm.com</header>
+  <nav>
+    <a href="#coldblooded">Cold-Blooded</a>
+    <a href="#darkpsych">Dark Psychology</a>
+    <a href="#chill">Chill</a>
+    <a href="#peace">Peace</a>
+  </nav>
+  <div class="section" id="coldblooded">
+    <h2>Cold-Blooded</h2>
+    <p>
+      Calm mind, calculated moves. Cold-blooded doesn’t mean heartless — it means balanced. Power is not in emotion, it’s in control.
+    </p>
+  </div>
+  <div class="section" id="darkpsych">
+    <h2>Dark Psychology</h2>
+    <p>
+      Understanding the shadows of the human mind. Psychology isn't just about happiness — it's also about survival, defense, and awareness.
+    </p>
+  </div>
+  <div class="section" id="chill">
+    <h2>Chill</h2>
+    <p>
+      Chill isn't laziness. It's energy in peace mode. Calmness that can't be shaken. Power that flows like a frozen river.
+    </p>
+  </div>
+  <div class="section" id="peace">
+    <h2>Peace</h2>
+    <p>
+      True peace is not absence of war — it's standing in a storm without shaking. Storms may rage, but silence stays inside.
+    </p>
+  </div>
+  <div class="section post-box">
+    <h2>Daily Drop (Write & Share)</h2>
+    <textarea id="dailyInput" placeholder="Write your thought for today..."></textarea>
+    <button onclick="postThought()">Post</button>
+    <div class="entries" id="entryList"></div>
+  </div>
+  <script>
+    function postThought() {
+      const text = document.getElementById('dailyInput').value.trim();
+      if (text !== "") {
+        const entryDiv = document.createElement('div');
+        entryDiv.className = 'entry';
+        entryDiv.textContent = text;
+        document.getElementById('entryList').prepend(entryDiv);
+        document.getElementById('dailyInput').value = '';
+      }
+    }
+  </script>
 </body>
 </html>
